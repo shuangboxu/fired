@@ -159,5 +159,39 @@
     }
   </script>
 
+  <!-- 第二段音乐 -->
+<audio id="music2" hidden>
+  <source src="music.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  // 第一段音乐播放函数（点击右上角“点我关闭页面”时调用）
+  function playMusic() {
+    const audio = document.getElementById("bgm");
+    audio.muted = false;
+    audio.play().catch(err => {
+      console.log("播放失败：", err);
+    });
+  }
+
+  // 第二段音乐播放函数（10秒后弹窗触发）
+  function playMusic2() {
+    const music = document.getElementById("music2");
+    music.muted = false;
+    music.play().catch(err => {
+      console.log("第二段音乐播放失败：", err);
+    });
+  }
+
+  // 设置 10 秒后弹窗
+  setTimeout(() => {
+    const answer = confirm("你想继续看下去吗？");
+    // 无论选哪个，播放 music2
+    playMusic2();
+  }, 10000); // 10 秒 = 10000 毫秒
+</script>
+
+
 </body>
 </html>
