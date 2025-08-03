@@ -12,6 +12,7 @@
       line-height: 1.7;
       max-width: 800px;
       margin: auto;
+      position: relative;
     }
 
     h1, h2 {
@@ -53,14 +54,29 @@
       margin-top: 20px;
       font-size: 0.9em;
     }
+
+    .close-text {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      color: #ff4c4c;
+      font-size: 1em;
+      cursor: pointer;
+      text-decoration: underline;
+      z-index: 999;
+    }
   </style>
 </head>
 <body>
 
+  <!-- 右上角点击文字 -->
+  <div class="close-text" onclick="playMusic()">点我关闭页面</div>
+
   <h1>BEIJING INSTITUTE OF TECHNOLOGY</h1>
   <h2>OFFICIAL NOTICE OF ACADEMIC OBLITERATION</h2>
   <h1 style="color: #ff0000; font-size: 3em; margin-top: 30px; text-shadow: 2px 2px 8px black;">
-  🔥 YOU ARE FIRED !!! 🔥</h1>
+    🔥 YOU ARE FIRED !!! 🔥
+  </h1>
 
   <div class="block">
     <strong>To:</strong> Liu Yang (Student ID: [REDACTED])<br>
@@ -125,6 +141,23 @@
   </div>
 
   <div class="hashtag">#YOUAREFIRED</div>
+
+  <!-- 音乐播放器，初始隐藏 -->
+  <audio id="bgm" hidden>
+    <source src="clown.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- 脚本控制播放 -->
+  <script>
+    function playMusic() {
+      const audio = document.getElementById("bgm");
+      audio.muted = false;
+      audio.play().catch(err => {
+        console.log("播放失败：", err);
+      });
+    }
+  </script>
 
 </body>
 </html>
